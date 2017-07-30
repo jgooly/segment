@@ -5,9 +5,9 @@
 - [ ] create sessions model
 - [ ] create dau model
 
-### Tests
+#### Tests
 - [ ] universal id model: unique alias
 - [ ] sessions: unique session id
 
-### Documentation
+#### Documentation
 - [ ] update README.MD with useful information
