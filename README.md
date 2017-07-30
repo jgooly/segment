@@ -1,4 +1,4 @@
-### dbt models for [your org/project name]
+### Segment dbt data models
 
 ---
 - [What is dbt](https://dbt.readme.io/docs/overview)?
