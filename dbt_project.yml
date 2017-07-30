@@ -17,18 +17,16 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 
-models:
+models:  
   segment:
     enable: true
     materialized: view
+      analytics:
+        materialized: ephemeral
       base:
         materialized: ephemeral
-
-      vars:
-        "base.pages" : "segment.pages"
-        "base.tracks" : "segment.tracks"
-        "base.users" : "segment.users"
-        "base.identifies" : "segment.identifies"
-
-
-
+          vars:
+            "base.pages" : "segment.pages"
+            "base.tracks" : "segment.tracks"
+            "base.users" : "segment.users"
+            "base.identifies" : "segment.identifies"
