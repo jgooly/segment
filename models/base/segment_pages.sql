@@ -9,7 +9,7 @@ SELECT
   path,
   url,
   title,
-  context_page_referrer as referrer,
+  context_page_referrer AS referrer,
   search,
   context_campaign_name,
   context_campaign_content,
@@ -17,5 +17,5 @@ SELECT
   context_campaign_source,
   context_campaign_term,
   context_user_agent
-from
+FROM
   {{ var('base.pages') }}
