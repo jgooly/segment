@@ -3,6 +3,7 @@
 #### Models
 - [ ] map universal ids to unioned tracks and page models
 - [ ] create sessions model
+- [ ] create sessions map model with page/track sequence
 - [ ] create dau model
 
 #### Tests
