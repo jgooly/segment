@@ -16,6 +16,6 @@ SELECT
   context_campaign_medium,
   context_campaign_source,
   context_campaign_term,
-  context_user_agent,
+  context_user_agent
 from
   {{ var('base.pages') }}
