@@ -1,17 +1,11 @@
-
-# Name your package! Package names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
-name: 'my_new_package'
+name: 'segment'
 version: '1.0'
 
 # This setting configures which "profile" dbt uses for this project. Profiles contain
 # database connection information, and should be configured in the  ~/.dbt/profiles.yml file
-profile: 'default'
 
-# These configurations specify where dbt should look for different types of files.
-# The `source-paths` config, for example, states that source models can be found
-# in the "models/" directory. You probably won't need to change these!
+profile: 'default'  # <== change this as necessary for your setup.
+
 source-paths: ["models"]
 analysis-paths: ["analysis"] 
 test-paths: ["tests"]
@@ -22,13 +16,19 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "target"
     - "dbt_modules"
 
-# You can define configurations for models in the `source-paths` directory here.
-# Using these configurations, you can enable or disable models, change how they
-# are materialized, and more!
 
-# In this example config, we tell dbt to build all models in the example/ directory
-# as views (the default). Try changing `view` to `table` below, then re-running dbt
 models:
-  my_new_package:
-      example:
-          materialized: view
+  segment:
+    enable: true
+    materialized: view
+      base:
+        materialized: ephemeral
+
+      vars:
+        "base.pages" : "segment.pages"
+        "base.tracks" : "segment.tracks"
+        "base.users" : "segment.users"
+        "base.identifies" : "segment.identifies"
+
+
+
