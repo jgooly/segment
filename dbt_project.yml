@@ -22,6 +22,8 @@ models:
     enable: true
     materialized: view
       analytics:
+        materialized: table
+      utility_models:
         materialized: ephemeral
       base:
         materialized: ephemeral
