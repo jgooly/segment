@@ -10,20 +10,18 @@ segment_sessions:
   constraints:
     unique:
       - session_id
-      - ('session_id' || '|' || session_seq_num)
+      - ('session_id' || '|' || session_sequence)
     not_null:
       - next_session_start
-      - sessions_seq_num
+      - sessions_sequence
       - session_id
 
 segment_session_mapped_actions:
   constraints:
     unique:
-      -
+      - ('session_id' || '|' || 'action_sequence')
     not_null:
-      -
-
-
+      - session_id
 
 # This configuration file specifies constraints that should (ideally)
 # be true about your data models. The constraints can be tested using
