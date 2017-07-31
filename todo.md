@@ -5,6 +5,8 @@
 - [X] create sessions model
 - [X] create sessions map model with page/track sequence
 - [X] create dau model
+- [ ] weekly active users
+- [ ] monthly active users
 
 #### Tests
 - [X] universal id model
