@@ -1,4 +1,10 @@
-SELECT
+with base_pages as (
+
+    select * from {{ var('base.pages') }}
+
+)
+
+select
   id,
   received_at,
   timestamp,
@@ -9,7 +15,7 @@ SELECT
   path,
   url,
   title,
-  context_page_referrer AS referrer,
+  context_page_referrer as referrer,
   search,
   context_campaign_name,
   context_campaign_content,
@@ -17,5 +23,5 @@ SELECT
   context_campaign_source,
   context_campaign_term,
   context_user_agent
-FROM
-  {{ var('base.pages') }}
+
+from base_pages

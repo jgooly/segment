@@ -1,10 +1,16 @@
-SELECT
+with base_identifies as (
+
+    select * from {{ var('base.identifies') }}
+
+)
+
+select
   id,
   received_at,
-  a.timestamp,
+  timestamp,
   created_at,
   anonymous_id,
   user_id,
   locale
-FROM
-  {{ ref('base.identifies') }} a
+
+from base_identifies
