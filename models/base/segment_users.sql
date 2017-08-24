@@ -1,5 +1,11 @@
-SELECT
-  id AS user_id,
+with base_users as (
+
+    select * from {{ var('base.users') }}
+
+)
+
+select
+  id as user_id,
   received_at,
   created_at,
   locale,
@@ -8,5 +14,5 @@ SELECT
   context_campaign_source,
   context_campaign_content,
   context_campaign_term
-FROM
-  {{ ref('base.users') }}
+
+from base_users
