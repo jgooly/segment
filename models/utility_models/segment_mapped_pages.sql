@@ -1,12 +1,23 @@
-with mapped_pages as (
+with segment_pages as (
+
+  select * from {{ ref(segment_pages) }}
+
+),
+
+  segment_universal_user_id as (
+
+    select * from {{ ref(segment_universal_user_id) }}
+
+  ),
+
+  mapped_pages as (
 
     select
       b.universal_alias,
       a.*
 
-    from {{ ref(segment_pages) }} a
-    left join {{ ref(segment_universal_user_id) }} b
-      on a.anonymous_id = b.alias
+    from segment_pages a
+      left join segment_universal_user_id b on a.anonymous_id = b.alias
 
 )
 

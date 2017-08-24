@@ -1,12 +1,23 @@
-with mapped_tracks as (
+with segment_tracks as (
+
+  select * from {{ ref(segment_tracks) }}
+
+),
+
+  segment_universal_user_id as (
+
+    select * from {{ ref(segment_universal_user_id) }}
+
+  ),
+
+  mapped_tracks as (
 
     select
       b.universal_alias,
       a.*
 
-    from {{ ref(segment_tracks) }} a
-    left join {{ ref(segment_universal_user_id) }} b
-    on a.anonymous_id = b.alias
+    from segment_tracks a
+      left join segment_universal_user_id b on a.anonymous_id = b.alias
 
 )
 

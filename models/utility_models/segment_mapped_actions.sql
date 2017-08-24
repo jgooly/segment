@@ -1,3 +1,15 @@
+with segment_mapped_pages as (
+
+  select * from {{ ref(segment_mapped_pages) }}
+
+),
+
+  segment_mapped_tracks as (
+
+    select * from {{ ref(segment_mapped_tracks) }}
+
+  )
+
 select
   a.universal_alias,
   a.id,
@@ -6,7 +18,7 @@ select
   a.name,
   'page' as action_type
 
-from {{ ref(segment_mapped_pages) }} a
+from segment_mapped_pages a
 
 union all
 
@@ -18,4 +30,4 @@ select
   b.event_text        as name,
   'track'             as action_type
 
-from {{ ref(segment_mapped_tracks) }} b
+from segment_mapped_tracks b

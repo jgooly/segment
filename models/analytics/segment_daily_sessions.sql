@@ -1,6 +1,14 @@
-SELECT
-  date(session_start)        AS _date,
-  count(DISTINCT session_id) AS count
-FROM {{ ref(segment_sessions) }}
-GROUP BY date(session_start)
-ORDER BY _date DESC
+with segment_sessions as (
+
+    select * from {{ ref(segment_sessions) }}
+
+)
+
+select
+  date(session_start)        as _date,
+
+  count(distinct session_id) as count
+
+from segment_sessions
+group by date(session_start)
+order by _date desc

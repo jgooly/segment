@@ -1,11 +1,17 @@
-with realiases as (
+with segment_pages as (
 
-    select
-      anonymous_id as alias,
-      user_id      as next_alias
+    select * from {{ ref('segment_pages') }}
 
-    from {{ ref('segment_pages') }}
-)
+),
+
+  realiases as (
+
+      select
+        anonymous_id as alias,
+        user_id      as next_alias
+
+      from segment_pages
+  )
 
 select distinct
   r0.alias,
