@@ -11,6 +11,7 @@ with segment_pages as (
         user_id      as next_alias
 
       from segment_pages
+
   )
 
 select distinct
