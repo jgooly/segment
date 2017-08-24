@@ -1,12 +1,15 @@
- WITH realiases AS (
-     SELECT
-       anonymous_id AS alias,
-       user_id      AS next_alias
-     FROM {{ ref('segment_pages') }}
- )
+with realiases as (
 
- SELECT DISTINCT
-   r0.alias,
-   COALESCE(r1.next_alias, r1.alias, r0.alias) AS universal_alias
- FROM realiases r0
-   LEFT JOIN realiases r1 ON r0.alias = r1.alias
+    select
+      anonymous_id as alias,
+      user_id      as next_alias
+
+    from {{ ref('segment_pages') }}
+)
+
+select distinct
+  r0.alias,
+  coalesce(r1.next_alias, r1.alias, r0.alias) as universal_alias
+
+from realiases r0
+  left join realiases r1 on r0.alias = r1.alias
