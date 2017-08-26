@@ -1,12 +1,12 @@
 with segment_pages as (
 
-  select * from {{ ref(segment_pages) }}
+  select * from {{ ref('segment_pages') }}
 
 ),
 
   segment_universal_user_id as (
 
-    select * from {{ ref(segment_universal_user_id) }}
+    select * from {{ ref('segment_universal_user_id') }}
 
   ),
 

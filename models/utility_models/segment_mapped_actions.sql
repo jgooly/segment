@@ -1,12 +1,12 @@
 with segment_mapped_pages as (
 
-  select * from {{ ref(segment_mapped_pages) }}
+  select * from {{ ref('segment_mapped_pages') }}
 
 ),
 
   segment_mapped_tracks as (
 
-    select * from {{ ref(segment_mapped_tracks) }}
+    select * from {{ ref('segment_mapped_tracks') }}
 
   )
 

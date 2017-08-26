@@ -1,6 +1,6 @@
 with segment_sessions as (
 
-    select * from {{ ref(segment_sessions) }}
+    select * from {{ ref('segment_sessions') }}
 
 )
 

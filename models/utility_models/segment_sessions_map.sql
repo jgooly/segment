@@ -1,12 +1,12 @@
-with segment_sessions_mapped_action as (
+with segment_mapped_action as (
 
-  select * from {{ ref(segment_sessions_mapped_actions) }}
+  select * from {{ ref('segment_mapped_actions') }}
 
 ),
 
   segment_sessions as (
 
-    select * from {{ ref(segment_sessions) }}
+    select * from {{ ref('segment_sessions') }}
 
   ),
 

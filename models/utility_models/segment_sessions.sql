@@ -1,6 +1,6 @@
 with segment_mapped_actions as (
 
-  select * from {{ ref(segment_mapped_actions) }}
+  select * from {{ ref('segment_mapped_actions') }}
 
 ),
 
@@ -20,6 +20,7 @@ with segment_mapped_actions as (
 
   select
     *,
+
     datediff(minutes, last_received_at, received_at) as idle_time
 
   from mapped_actions

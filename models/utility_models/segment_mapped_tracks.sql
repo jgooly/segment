@@ -1,12 +1,12 @@
 with segment_tracks as (
 
-  select * from {{ ref(segment_tracks) }}
+  select * from {{ ref('segment_tracks') }}
 
 ),
 
   segment_universal_user_id as (
 
-    select * from {{ ref(segment_universal_user_id) }}
+    select * from {{ ref('segment_universal_user_id') }}
 
   ),
 
