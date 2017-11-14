@@ -27,30 +27,25 @@ with segment_mapped_actions as (
 
   ),
 
-    sessions_table as (
+sessions_table as (
 
-    select
-      received_at as session_start,
-      universal_alias,
+  select
+    ma.user_id,
+    ma.received_at as session_start,
 
-      row_number() over (parition by universal_alias order by received_at) a session_sequence,
-      lead(received_at) over partition by universal_alias order by received_at) as next_session_start
+    row_number() over (partition by ma.user_id
+      order by ma.received_at) || '-' || ma.user_id as session_id,
+    
+    row_number() over (partition by ma.user_id
+      order by ma.received_at) as session_sequence,
 
-    from mapped_actions
+    coalesce(
+      lead(ma.received_at)
+        over (partition by ma.user_id order by ma.received_at), '3000-01-01') as next_session_start
 
-  ),
+  from mapped_actions_xf as ma
+  where (ma.idle_time > 30 or ma.idle_time is null)
 
-  sessions_table_xf as (
+)
 
-    select
-      *,
-      session_sequence,
-
-      session_sequence || '-' || universal_alias as session_id,
-      coalesce(next_session_start, '3001-01-01')  as next_session_start
-
-    from sessions_table
-
-  )
-
-select * from sessions_table_xf
+select * from sessions_table
