@@ -79,7 +79,7 @@ models:
 ...
 
 repositories:
-  - "git@github.com:jgooly/segment.git"
+ - https://github.com/jgooly/segment
 ```
 
 ### Database Support
