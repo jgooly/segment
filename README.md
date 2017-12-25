@@ -19,7 +19,7 @@ These models can be used to build other custom models to fit your use case.
 
 
 #### Model Graph
-![segment graph](/assets/graph-view-materialization.png)
+![segment graph](etc/segment_dbt_graph.png)
 
 #### How You Might Use These Models?
 
