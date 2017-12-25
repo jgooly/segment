@@ -6,7 +6,7 @@ version: '0.0.1'
 
 #profile: 'default'  # <-- change this as necessary for your setup.
 
-profile: julian  # remove this when pushing to repo.
+profile: "create your own profile here"  # remove this when pushing to repo.
 
 source-paths: ["models"]
 analysis-paths: ["analysis"] 
