@@ -6,7 +6,7 @@ version: '0.0.1'
 
 #profile: 'default'  # <-- change this as necessary for your setup.
 
-profile: julian
+profile: "create your own profile here"  # remove this when pushing to repo.
 
 source-paths: ["models"]
 analysis-paths: ["analysis"] 
@@ -24,14 +24,15 @@ models:
     enable: true
     materialized: view
     analytics:
-      materialized: table
+      materialized: view
     utility_models:
-      materialized: ephemeral
+      materialized: view
     adwords:
+      enable: false
       vars:
         "segment.adwords.campaign_performance_report": "adwords.campaign_performance_report"
     base:
-      materialized: ephemeral
+      materialized: view
       vars:
         "base.pages" : "segment.pages"
         "base.tracks" : "segment.tracks"
