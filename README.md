@@ -13,7 +13,7 @@ These models can be used to build other custom models to fit your use case.
 | segment\_universal\_user_id | Contains the cononical mapping of many anonymous ids to a single universal id per user. |
 | segment\_mapped\_pages | Contains the Segment 'pages' table with the universal id mapped to each record. |
 | segment\_mapped\_events | Contains the Segment 'tracks' table with the universal id mapped to each record. |
-| segment\_mapped\_actions | Contains unions the 'segment\_mapped\_pages' model and 'segment\_mapped\_events' model. |
+| segment\_mapped\_actions | Contains the union of the 'segment\_mapped\_pages' model and 'segment\_mapped\_events' model. |
 | segment\_sessions | Contains the start and end of each user session and session id. |
 | segment\_sessions\_map | Contains the 'segment\_mapped\_actions' model with session ids mapped to each track or page call. |
 
@@ -21,7 +21,7 @@ These models can be used to build other custom models to fit your use case.
 #### Model Graph
 ![segment graph](etc/segment_dbt_graph.png)
 
-#### How You Might Use These Models?
+#### How You Might Use These Models
 
 These "foundational" models can be used to calculate aggregrated statistics or branched out to create new complex models.
 
@@ -49,6 +49,38 @@ The base [variables](http://dbt.readthedocs.io/en/master/guide/context-variables
 |segment.identifies|The Segment _identifies_ table in warehouse (usually something like _segment.identifies_).|No|
 |segment.adwords.campaign\_performance\_report|The Segment ETL'd AdWords table in warehouse (usually something like _adwords.campaign\_performance\_report_). The Segment AdWords integration must be enabled in Segment. **This is a work in progress**.|No|
 
+An example of the `dbt_project.yml` file:
+
+```yml
+# dbt_project.yml
+
+...
+
+models:  
+  segment:
+    enable: true
+    materialized: view
+    analytics:
+      materialized: view
+    utility_models:
+      materialized: view
+    adwords:
+      enable: false
+      vars:
+        "segment.adwords.campaign_performance_report": "adwords.campaign_performance_report"
+    base:
+      materialized: view
+      vars:
+        "base.pages" : "segment.pages"
+        "base.tracks" : "segment.tracks"
+        "base.users" : "segment.users"
+        "base.identifies" : "segment.identifies"
+
+...
+
+repositories:
+  - "git@github.com:jgooly/segment.git"
+```
 
 ### Database Support
 These models were written and tested for Redshift only.
