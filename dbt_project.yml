@@ -38,3 +38,6 @@ models:
         "base.tracks" : "segment.tracks"
         "base.users" : "segment.users"
         "base.identifies" : "segment.identifies"
+
+repositories:
+  - https://github.com/jgooly/segment
