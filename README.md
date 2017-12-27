@@ -47,7 +47,6 @@ The base [variables](http://dbt.readthedocs.io/en/master/guide/context-variables
 |segment.tracks|The Segment _tracks_ table in warehouse (usually something like _segment.tracks_).|Yes|
 |segment.users|The Segment _users_ table in warehouse (usually something like _segment.users_).|No|
 |segment.identifies|The Segment _identifies_ table in warehouse (usually something like _segment.identifies_).|No|
-|segment.adwords.campaign\_performance\_report|The Segment ETL'd AdWords table in warehouse (usually something like _adwords.campaign\_performance\_report_). The Segment AdWords integration must be enabled in Segment. **This is a work in progress**.|No|
 
 An example of the `dbt_project.yml` file:
 
@@ -60,14 +59,8 @@ models:
   segment:
     enable: true
     materialized: view
-    analytics:
-      materialized: view
     utility_models:
       materialized: view
-    adwords:
-      enable: false
-      vars:
-        "segment.adwords.campaign_performance_report": "adwords.campaign_performance_report"
     base:
       materialized: view
       vars:
