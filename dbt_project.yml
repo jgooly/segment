@@ -4,9 +4,7 @@ version: '0.0.1'
 # This setting configures which "profile" dbt uses for this project. Profiles contain
 # database connection information, and should be configured in the  ~/.dbt/profiles.yml file
 
-#profile: 'default'  # <-- change this as necessary for your setup.
-
-profile: "create your own profile here"  # remove this when pushing to repo.
+profile: 'default'  # <-- change this as necessary for your setup.
 
 source-paths: ["models"]
 analysis-paths: ["analysis"] 
@@ -23,14 +21,8 @@ models:
   segment:
     enable: true
     materialized: view
-    analytics:
-      materialized: view
     utility_models:
       materialized: view
-    adwords:
-      enable: false
-      vars:
-        "segment.adwords.campaign_performance_report": "adwords.campaign_performance_report"
     base:
       materialized: view
       vars:
@@ -38,6 +30,3 @@ models:
         "base.tracks" : "segment.tracks"
         "base.users" : "segment.users"
         "base.identifies" : "segment.identifies"
-
-repositories:
-  - https://github.com/jgooly/segment

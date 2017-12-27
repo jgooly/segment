@@ -17,4 +17,4 @@
 - [ ] create macro to determine if segment action (page or track) is from mobile device
 
 #### Documentation
-- [ ] update README.MD with useful information
+- [X] update README.MD with useful information
