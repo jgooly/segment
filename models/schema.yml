@@ -22,4 +22,3 @@ segment_sessions_map:
       - ('session_id' || '|' || 'action_sequence')
     not_null:
       - session_id
-      
