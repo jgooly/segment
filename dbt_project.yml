@@ -21,8 +21,6 @@ models:
   segment:
     enable: true
     materialized: view
-    analytics:
-      materialized: view
     utility_models:
       materialized: view
     base:
