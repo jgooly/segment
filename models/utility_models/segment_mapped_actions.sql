@@ -26,7 +26,7 @@ select
   b.universal_alias,
   b.id,
   b.received_at,
-  b.context_page_path as path,
+  b.path,
   b.event_text        as name,
   'track'             as action_type
 

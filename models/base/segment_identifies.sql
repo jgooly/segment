@@ -7,7 +7,7 @@ with base_identifies as (
 select
   id,
   received_at,
-  timestamp,
+  "timestamp",
   created_at,
   anonymous_id,
   user_id,

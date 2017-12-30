@@ -4,11 +4,11 @@ with segment_mapped_actions as (
 
 ),
 
-  mapped_actions (
+  mapped_actions as (
 
     select
       id as action_id,
-      universial_alias,
+      universial_alias as user_id,
       received_at,
       lag(received_at) over (partition by universal_alias order by received_at) as last_received_at
 
