@@ -18,12 +18,12 @@ with segment_mapped_action as (
         a.path,
         a.name,
         a.action_type,
-        b.user_id,
+        b.universial_alias,
         b.session_id
 
       from segment_mapped_action a
         inner join segment_sessions b
-          on a.universal_alias = b.user_id
+          on a.universal_alias = b.universial_alias
              and a.received_at >= b.session_start
              and a.received_at < b.next_session_start
   )
