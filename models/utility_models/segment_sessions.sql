@@ -8,7 +8,7 @@ with segment_mapped_actions as (
 
     select
       id as action_id,
-      universial_alias,
+      universal_alias,
       received_at,
       lag(received_at) over (partition by universal_alias order by received_at) as last_received_at
 
@@ -30,18 +30,18 @@ with segment_mapped_actions as (
 sessions_table as (
 
   select
-    ma.universial_alias,
+    ma.universal_alias,
     ma.received_at as session_start,
 
-    row_number() over (partition by ma.universial_alias
-      order by ma.received_at) || '-' || ma.universial_alias as session_id,
+    row_number() over (partition by ma.universal_alias
+      order by ma.received_at) || '-' || ma.universal_alias as session_id,
     
-    row_number() over (partition by ma.universial_alias
+    row_number() over (partition by ma.universal_alias
       order by ma.received_at) as session_sequence,
 
     coalesce(
       lead(ma.received_at)
-        over (partition by ma.universial_alias order by ma.received_at), '3000-01-01') as next_session_start
+        over (partition by ma.universal_alias order by ma.received_at), '3000-01-01') as next_session_start
 
   from mapped_actions_xf as ma
   where (ma.idle_time > 30 or ma.idle_time is null)
