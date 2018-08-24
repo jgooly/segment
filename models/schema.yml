@@ -10,7 +10,7 @@ segment_sessions:
   constraints:
     unique:
       - session_id
-      - ('session_id' || '|' || session_sequence)
+      - (session_id || '|' || session_sequence)
     not_null:
       - next_session_start
       - session_sequence
@@ -19,6 +19,6 @@ segment_sessions:
 segment_sessions_map:
   constraints:
     unique:
-      - ('session_id' || '|' || 'action_sequence')
+      - (session_id || '|' || action_sequence)
     not_null:
       - session_id
