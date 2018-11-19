@@ -6,9 +6,12 @@ with base_users as (
 
 select
   id as user_id,
-  received_at,
-  created_at,
-  locale,
+
+  {{ var('created_at') }} as created_at,
+  {{ var('received_at') }} as received_at,
+
+  {{ var('locale') }} as locale,
+
   context_campaign_medium,
   context_campaign_name,
   context_campaign_source,

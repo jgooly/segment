@@ -1,0 +1,4 @@
+segment_pages:
+  constraints:
+    not_null:
+      - anonymous_id

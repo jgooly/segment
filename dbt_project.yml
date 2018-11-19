@@ -7,9 +7,9 @@ version: '0.0.1'
 profile: 'default'  # <-- change this as necessary for your setup.
 
 source-paths: ["models"]
-analysis-paths: ["analysis"] 
+analysis-paths: ["analysis"]
 test-paths: ["tests"]
-data-paths: ["data"] 
+data-paths: ["data"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
@@ -17,7 +17,7 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 
-models:  
+models:
   segment:
     enable: true
     materialized: view
@@ -30,3 +30,6 @@ models:
         "base.tracks" : "segment.tracks"
         "base.users" : "segment.users"
         "base.identifies" : "segment.identifies"
+        "created_at": "created_at"
+        "received_at": "received_at"
+        "locale": "locale"

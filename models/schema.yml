@@ -1,3 +1,13 @@
+segment_mapped_pages:
+    constraints:
+        not_null:
+            - universal_alias
+
+segment_mapped_tracks:
+    constraints:
+        not_null:
+            - universal_alias
+
 segment_universal_user_id:
     constraints:
         not_null:

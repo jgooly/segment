@@ -13,7 +13,7 @@ with segment_tracks as (
   mapped_tracks as (
 
     select
-      b.universal_alias,
+      coalesce(a.user_id, b.universal_alias) as universal_alias,
       a.*
 
     from segment_tracks a
