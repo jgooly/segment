@@ -6,8 +6,11 @@ with base_pages as (
 
 select
   id,
-  received_at,
+
+  {{ var('received_at') }} as received_at,
+
   "timestamp",
+
   anonymous_id,
   user_id,
   name,

@@ -6,11 +6,14 @@ with base_identifies as (
 
 select
   id,
-  received_at,
+
+  {{ var('created_at') }} as created_at,
+  {{ var('received_at') }} as received_at,
+
   "timestamp",
-  created_at,
+
   anonymous_id,
   user_id,
-  locale
+  {{ var('locale') }} as locale
 
 from base_identifies
